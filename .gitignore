@@ -27,5 +27,6 @@ hs_err_pid*
 .idea/modules.xml
 .idea/workspace.xml
 nio2/nio2.iml
-nio2/src/
 /.idea/vcs.xml
+jpa/jpa.iml
+java.iml

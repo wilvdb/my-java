@@ -6,6 +6,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>nio2</module>
+        <module>jpa</module>
     </modules>
 
     <packaging>pom</packaging>
