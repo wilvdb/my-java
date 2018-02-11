@@ -30,3 +30,7 @@ nio2/nio2.iml
 /.idea/vcs.xml
 jpa/jpa.iml
 java.iml
+/jpa/target/
+/nio2/target/
+jpa/src/test/
+nio2/target/
