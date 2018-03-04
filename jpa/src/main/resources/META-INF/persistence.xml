@@ -6,6 +6,9 @@
 
     <persistence-unit  name="myjava.persistence.unit" transaction-type="RESOURCE_LOCAL" >
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>jpa.entity.Card</class>
+        <class>jpa.entity.Dasboard</class>
+        <class>jpa.entity.Stage</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:hsqldb:mem:test" />
