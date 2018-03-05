@@ -11,22 +11,21 @@ import java.util.Date;
 @Entity
 public class Card {
 
-    private long id;
+    private Long id;
     private String name;
     private Date creationDate;
-    private Line line;
     private Stage currentStage;
     private boolean done;
     private Date dueDate;
 
     @Id
-    @Column(name="TASK_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public long getId() {
+    @Column(name="CARD_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,17 +48,7 @@ public class Card {
         this.creationDate = creationDate;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    public Line getLine() {
-        return line;
-    }
-
-    public void setLine(Line line) {
-        this.line = line;
-    }
-
-    @Column(name = "CURRENT_STAGE")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Stage getCurrentStage() {
         return currentStage;
     }

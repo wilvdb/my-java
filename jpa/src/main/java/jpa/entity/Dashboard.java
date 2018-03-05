@@ -12,24 +12,23 @@ import java.util.zip.DataFormatException;
 @Entity
 public class Dashboard {
 
-    private long id;
+    private Long id;
     private String name;
     private Date creationDate;
     private Set<Stage> stages;
-    private Set<Line> lines;
 
     @Id
     @Column(name = "DASHBOARD_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public long getId() {
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-@Column(name="NAME",unique = true, nullable=false)
+    @Column(name="NAME",unique = true, nullable=false)
     public String getName() {
         return name;
     }
@@ -48,7 +47,7 @@ public class Dashboard {
         this.creationDate = creationDate;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "id")
     public Set<Stage> getStages() {
         return stages;
     }
@@ -57,12 +56,4 @@ public class Dashboard {
         this.stages = stages;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    public Set<Line> getLines() {
-        return lines;
-    }
-
-    public void setLines(Set<Line> lines) {
-        this.lines = lines;
-    }
 }
