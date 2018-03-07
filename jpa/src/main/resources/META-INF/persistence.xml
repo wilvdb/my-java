@@ -32,6 +32,9 @@
         <!--Many to many -->
         <class>jpa.model.F</class>
         <class>jpa.model.G</class>
+        <!-- Embedded -->
+        <class>jpa.model.H</class>
+        <class>jpa.model.I</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
