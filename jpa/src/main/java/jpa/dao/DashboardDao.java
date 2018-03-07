@@ -24,4 +24,14 @@ public class DashboardDao implements Dao<Long, Dashboard> {
 
         return entity;
     }
+
+    @Override
+    public Iterable<Dashboard> findAll() {
+        return null;
+    }
+
+    @Override
+    public Dashboard findById(Long id) {
+        return null;
+    }
 }
