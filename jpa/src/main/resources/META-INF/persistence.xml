@@ -22,13 +22,15 @@
     <persistence-unit  name="model.persistence.unit" transaction-type="RESOURCE_LOCAL" >
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>jpa.model.A</class>
+        <class>jpa.model.B</class>
+        <class>jpa.model.C</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="postgres" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="show_sql" value="true"/>
         </properties>
     </persistence-unit>
