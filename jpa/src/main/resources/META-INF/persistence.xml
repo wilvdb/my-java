@@ -21,9 +21,14 @@
     </persistence-unit>-->
     <persistence-unit  name="model.persistence.unit" transaction-type="RESOURCE_LOCAL" >
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- Simple mapping -->
         <class>jpa.model.A</class>
+        <!-- One to one -->
         <class>jpa.model.B</class>
         <class>jpa.model.C</class>
+        <!-- One to many -->
+        <class>jpa.model.D</class>
+        <class>jpa.model.E</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
