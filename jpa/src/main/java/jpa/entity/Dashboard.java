@@ -9,6 +9,7 @@ import java.util.zip.DataFormatException;
 /**
  * Created by wil on 11/02/2018.
  */
+@NamedQuery(name="dashboardStages", query="select d.stages from Dashboard d where d.id = :id")
 @Entity
 public class Dashboard {
 
@@ -47,7 +48,7 @@ public class Dashboard {
         this.creationDate = creationDate;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Stage> getStages() {
         return stages;
     }

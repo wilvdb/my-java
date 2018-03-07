@@ -4,23 +4,12 @@
         version="2.0"  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-    <!--<persistence-unit  name="myjava.persistence.unit" transaction-type="RESOURCE_LOCAL" >
+    <persistence-unit  name="my.persistence.unit" transaction-type="RESOURCE_LOCAL" >
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- query -->
         <class>jpa.entity.Card</class>
         <class>jpa.entity.Dashboard</class>
         <class>jpa.entity.Stage</class>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
-            <property name="javax.persistence.jdbc.url"    value="jdbc:hsqldb:mem:test" />
-            <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="javax.persistence.jdbc.password" value="" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
-            <property name="show_sql" value="true"/>
-        </properties>
-    </persistence-unit>-->
-    <persistence-unit  name="model.persistence.unit" transaction-type="RESOURCE_LOCAL" >
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Simple mapping -->
         <class>jpa.model.A</class>
         <!-- One to one -->
@@ -41,7 +30,7 @@
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="postgres" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="show_sql" value="true"/>
         </properties>
     </persistence-unit>

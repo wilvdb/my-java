@@ -10,4 +10,6 @@ public interface Dao<K, E> {
     E findById(K id);
 
     Iterable<E> findAll();
+
+    void deleteAll();
 }

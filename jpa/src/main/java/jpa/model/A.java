@@ -73,8 +73,9 @@ public class A {
     }
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("model.persistence.unit");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my.persistence.unit");
         EntityManager entityManager = emf.createEntityManager();
+
         entityManager.close();
     }
 }
