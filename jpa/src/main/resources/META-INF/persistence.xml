@@ -24,6 +24,10 @@
         <!-- Embedded -->
         <class>jpa.model.H</class>
         <class>jpa.model.I</class>
+        <!-- Inheritance -->
+        <class>jpa.model.J</class>
+        <class>jpa.model.K</class>
+        <class>jpa.model.L</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/test" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
