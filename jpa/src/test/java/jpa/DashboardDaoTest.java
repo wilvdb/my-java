@@ -35,7 +35,7 @@ public class DashboardDaoTest extends AbstractDaoTest {
         Assertions.assertThat(dash.getId()).isNotNull();
 
         Iterable<Dashboard> dashboards = dao.findAll();
-        Assertions.assertThat(dashboards).hasSize(2);
+        Assertions.assertThat(dashboards).hasSize(3);
 
         Dashboard d = dao.findById(dash.getId());
         Assertions.assertThat(d.getName()).isEqualTo(dash.getName());
@@ -61,5 +61,17 @@ public class DashboardDaoTest extends AbstractDaoTest {
         Assertions.assertThat(dashboardStages).hasSize(1);
         Stage s = dashboardStages.iterator().next();
         Assertions.assertThat(s.getName()).isEqualTo(stage1.getName());
+    }
+
+    @Test
+    public void dashboard_like_name() {
+        Dashboard dash = new Dashboard();
+        dash.setName("Kanban3");
+        dash.setCreationDate(new Date());
+
+        dao.save(dash);
+
+        Iterable<Dashboard> dashboards = dao.findLikeName("K%");
+        Assertions.assertThat(dashboards).hasSize(1);
     }
 }
