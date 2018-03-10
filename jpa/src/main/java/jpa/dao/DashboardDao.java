@@ -23,7 +23,7 @@ public class DashboardDao implements Dao<Long, Dashboard> {
     public DashboardDao(EntityManager entityManager) { this.entityManager = entityManager; }
 
     /**
-     *
+     * Save
      * @param entity
      * @return
      */
@@ -37,17 +37,17 @@ public class DashboardDao implements Dao<Long, Dashboard> {
     }
 
     /**
-     *
+     * Simple native SQL
      * @return
      */
     @Override
     public Iterable<Dashboard> findAll() {
-        Query query = entityManager.createQuery("select d from Dashboard d", Dashboard.class);
+        Query query = entityManager.createNativeQuery("select * from dashboard", Dashboard.class);
         return query.getResultList();
     }
 
     /**
-     *
+     * Simple JQL sample
      * @param id
      * @return
      */
@@ -59,7 +59,7 @@ public class DashboardDao implements Dao<Long, Dashboard> {
     }
 
     /**
-     * Sample of named query
+     * Simple of named query
      * @param dashboardId
      * @return
      */
@@ -70,7 +70,7 @@ public class DashboardDao implements Dao<Long, Dashboard> {
     }
 
     /**
-     *
+     * Delete all based on EM
      */
     @Override
     public void deleteAll() {
@@ -81,7 +81,7 @@ public class DashboardDao implements Dao<Long, Dashboard> {
     }
 
     /**
-     *
+     * Simple use of Criteria API
      * @param name
      * @return
      */
