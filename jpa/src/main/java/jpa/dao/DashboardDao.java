@@ -3,7 +3,9 @@ package jpa.dao;
 import jpa.entity.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -93,5 +95,16 @@ public class DashboardDao implements Dao<Long, Dashboard> {
         criteria.where(builder.like(dashboardRoot.get(Dashboard_.name), name));
 
         return entityManager.createQuery(criteria).getResultList();
+    }
+
+    /**
+     *
+     * @param countStage
+     * @return
+     */
+    public Iterable<Dashboard> findWithStages() {
+        StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("dashboardWithStages");
+
+        return (Iterable<Dashboard>) query.getResultList();
     }
 }

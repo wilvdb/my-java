@@ -10,6 +10,8 @@ import java.util.zip.DataFormatException;
  * Created by wil on 11/02/2018.
  */
 @NamedQuery(name="dashboardStages", query="select d.stages from Dashboard d where d.id = :id")
+@NamedStoredProcedureQuery(name = "dashboardWithStages", procedureName = "show_dashboard_with_stages", resultClasses = Dashboard.class,
+    parameters = @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = void.class))
 @Entity
 public class Dashboard {
 

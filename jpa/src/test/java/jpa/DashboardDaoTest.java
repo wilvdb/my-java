@@ -74,4 +74,11 @@ public class DashboardDaoTest extends AbstractDaoTest {
         Iterable<Dashboard> dashboards = dao.findLikeName("K%");
         Assertions.assertThat(dashboards).hasSize(1);
     }
+
+    @Test
+    public void dashboard_with_stages() {
+        Iterable<Dashboard> dashboards = dao.findWithStages();
+
+        Assertions.assertThat(dashboards).hasSize(1);
+    }
 }
