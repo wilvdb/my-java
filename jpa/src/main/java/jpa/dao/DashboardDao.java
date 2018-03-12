@@ -103,6 +103,9 @@ public class DashboardDao implements Dao<Long, Dashboard> {
      * @return
      */
     public Iterable<Dashboard> findWithStages() {
+        //StoredProcedureQuery query = entityManager.createStoredProcedureQuery("show_dashboard_with_stages");
+        //query.registerStoredProcedureParameter(1, void.class, ParameterMode.REF_CURSOR);
+
         StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery("dashboardWithStages");
 
         return (Iterable<Dashboard>) query.getResultList();
