@@ -4,7 +4,6 @@ import org.springframework.test.annotation.Commit;
 import springdatajpa.entity.Dashboard;
 import springdatajpa.entity.Stage;
 import org.assertj.core.api.Assertions;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,10 @@ import java.util.Set;
 public class DashboardDaoTest {
 
     @Autowired
-    private DashboardDao dao;
+    private DashboardDao dashboardDao;
+
+    @Autowired
+    StageDao stageDao;
 
     @Test
     public void basic() {
@@ -35,14 +37,14 @@ public class DashboardDaoTest {
         dash.setName("Kanban");
         dash.setCreationDate(new Date());
 
-        dao.save(dash);
+        dashboardDao.save(dash);
 
         Assertions.assertThat(dash.getId()).isNotNull();
 
-        Iterable<Dashboard> dashboards = dao.findAll();
+        Iterable<Dashboard> dashboards = dashboardDao.findAll();
         Assertions.assertThat(dashboards).hasSize(3);
 
-        Optional<Dashboard> d = dao.findById(dash.getId());
+        Optional<Dashboard> d = dashboardDao.findById(dash.getId());
         Assertions.assertThat(d.get().getName()).isEqualTo(dash.getName());
     }
 
@@ -52,7 +54,7 @@ public class DashboardDaoTest {
         dash.setName("Kanban2");
         dash.setCreationDate(new Date());
 
-        dao.save(dash);
+        dashboardDao.save(dash);
 
         Stage stage1 = new Stage();
         stage1.setName("dev");
@@ -62,10 +64,10 @@ public class DashboardDaoTest {
         stages.add(stage1);
         dash.setStages(stages);
 
-        //Iterable<Stage> dashboardStages = dao.getDashboardStages(dash.getId());
-        //Assertions.assertThat(dashboardStages).hasSize(1);
-        //Stage s = dashboardStages.iterator().next();
-        //Assertions.assertThat(s.getName()).isEqualTo(stage1.getName());
+        Iterable<Stage> dashboardStages = stageDao.getDashboardStages(dash.getId());
+        Assertions.assertThat(dashboardStages).hasSize(1);
+        Stage s = dashboardStages.iterator().next();
+        Assertions.assertThat(s.getName()).isEqualTo(stage1.getName());
     }
 
     @Test
@@ -74,15 +76,15 @@ public class DashboardDaoTest {
         dash.setName("Kanban3");
         dash.setCreationDate(new Date());
 
-        dao.save(dash);
+        dashboardDao.save(dash);
 
-        Iterable<Dashboard> dashboards = dao.findAll(DashboardDao.DashboardSpecifications.toPredicate("K%"));
+        Iterable<Dashboard> dashboards = dashboardDao.findAll(DashboardDao.DashboardSpecifications.toPredicate("K%"));
         Assertions.assertThat(dashboards).hasSize(1);
     }
 
     @Test
     public void dashboard_with_stages() {
-        Iterable<Dashboard> dashboards = dao.findWithStages();
+        Iterable<Dashboard> dashboards = dashboardDao.findWithStages();
 
         Assertions.assertThat(dashboards).hasSize(1);
     }
