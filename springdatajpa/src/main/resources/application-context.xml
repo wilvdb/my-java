@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xmlns="http://www.springframework.org/schema/data/jpa"
+             xmlns:jpa="http://www.springframework.org/schema/data/jpa"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <repositories base-package="springdatajpa.dao" />
+    <jpa:repositories base-package="springdatajpa.dao" />
 
-    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
-    </beans:bean>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
 
-    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
-        <beans:property name="driverClass" value="org.postgresql.Driver" />
-        <beans:property name="url" value="jdbc:postgresql://localhost:5432/test" />
-        <beans:property name="username" value="postgres" />
-        <beans:property name="password" value="postgres" />
-    </beans:bean>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
+        <property name="driverClass" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/test" />
+        <property name="username" value="postgres" />
+        <property name="password" value="postgres" />
+    </bean>
 
-    <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <beans:property name="dataSource" ref="dataSource" />
-        <beans:property name="packagesToScan" value="springdatajpa.entity" />
-        <beans:property name="jpaVendorAdapter">
-            <beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <beans:property name="database" value="POSTGRESQL" />
-                <beans:property name="generateDdl" value="true" />
-                <beans:property name="showSql" value="true" />
-            </beans:bean>
-        </beans:property>
-        <beans:property name="jpaProperties">
-            <beans:props>
-                <beans:prop key="hibernate.hbm2ddl.auto">create-drop</beans:prop>
-            </beans:props>
-        </beans:property>
-    </beans:bean>
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="springdatajpa.entity" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="POSTGRESQL" />
+                <property name="generateDdl" value="true" />
+                <property name="showSql" value="true" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+            </props>
+        </property>
+    </bean>
 
-</beans:beans>
+</beans>
