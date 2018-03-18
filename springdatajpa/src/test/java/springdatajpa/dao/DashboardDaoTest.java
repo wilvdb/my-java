@@ -1,5 +1,6 @@
 package springdatajpa.dao;
 
+import org.springframework.test.annotation.Commit;
 import springdatajpa.entity.Dashboard;
 import springdatajpa.entity.Stage;
 import org.assertj.core.api.Assertions;
@@ -21,6 +22,7 @@ import java.util.Set;
 @RunWith(SpringRunner.class)
 @ContextConfiguration("/application-context.xml")
 @Transactional
+@Commit
 public class DashboardDaoTest {
 
     @Autowired
@@ -37,7 +39,7 @@ public class DashboardDaoTest {
         Assertions.assertThat(dash.getId()).isNotNull();
 
         Iterable<Dashboard> dashboards = dao.findAll();
-        Assertions.assertThat(dashboards).hasSize(1);
+        Assertions.assertThat(dashboards).hasSize(3);
 
         Dashboard d = dao.findById(dash.getId());
         Assertions.assertThat(d.getName()).isEqualTo(dash.getName());
@@ -79,20 +81,6 @@ public class DashboardDaoTest {
 
     @Test
     public void dashboard_with_stages() {
-        Dashboard dash = new Dashboard();
-        dash.setName("Kanban2");
-        dash.setCreationDate(new Date());
-
-        Stage stage1 = new Stage();
-        stage1.setName("dev");
-        stage1.setWorkInProgress(2);
-
-        Set<Stage> stages = new HashSet<>();
-        stages.add(stage1);
-        dash.setStages(stages);
-        
-        dao.save(dash);
-
         Iterable<Dashboard> dashboards = dao.findWithStages();
 
         Assertions.assertThat(dashboards).hasSize(1);
