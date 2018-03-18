@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xmlns="http://www.springframework.org/schema/data/jpa"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <repositories base-package="springdatajpa.dao" />
+
+    <tx:annotation-driven transaction-manager="txManager" />
+
+    <beans:bean id="dashboardDao" class="springdatajpa.dao.DashboardDao" />
+
+    <beans:bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+    </beans:bean>
+
+    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
+        <beans:property name="driverClass" value="org.postgresql.Driver" />
+        <beans:property name="url" value="jdbc:postgresql://localhost:5432/test" />
+        <beans:property name="username" value="postgres" />
+        <beans:property name="password" value="postgres" />
+    </beans:bean>
+
+    <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="packagesToScan" value="springdatajpa.entity" />
+        <beans:property name="jpaVendorAdapter">
+            <beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <beans:property name="database" value="POSTGRESQL" />
+                <beans:property name="generateDdl" value="true" />
+                <beans:property name="showSql" value="true" />
+            </beans:bean>
+        </beans:property>
+        <beans:property name="jpaProperties">
+            <beans:props>
+                <beans:prop key="hibernate.hbm2ddl.auto">create-drop</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+
+</beans:beans>
