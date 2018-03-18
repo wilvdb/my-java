@@ -38,12 +38,7 @@ interface DashboardDao extends JpaRepository<Dashboard, Long>, JpaSpecificationE
          * @return
          */
         public static Specification<Dashboard> toPredicate(final String name) {
-            return new Specification<Dashboard>() {
-                @Override
-                public Predicate toPredicate(Root<Dashboard> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                    return criteriaBuilder.like(root.get(Dashboard_.name), name);
-                }
-            };
+            return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like(root.get(Dashboard_.name), name);
         }
 
     }
