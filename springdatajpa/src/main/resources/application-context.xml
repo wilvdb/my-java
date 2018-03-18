@@ -9,9 +9,7 @@
 
     <repositories base-package="springdatajpa.dao" />
 
-    <beans:bean id="dashboardDao" class="springdatajpa.dao.DashboardDao" />
-
-    <beans:bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
     </beans:bean>
 
