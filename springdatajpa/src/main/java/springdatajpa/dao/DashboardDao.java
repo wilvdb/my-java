@@ -49,17 +49,6 @@ interface DashboardDao extends JpaRepository<Dashboard, Long>, JpaSpecificationE
     }
 
     /**
-     * Simple of named query
-     * @param dashboardId
-     * @return
-     */
-    //Iterable<Stage> getDashboardStages(Long dashboardId);
-     //   Query query = entityManager.createNamedQuery("dashboardStages");
-       // query.setParameter("id", dashboardId);
-        //return query.getResultList();
-    //}
-
-    /**
      *
      * @return
      */
