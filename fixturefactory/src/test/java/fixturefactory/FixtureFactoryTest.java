@@ -45,7 +45,7 @@ public class FixtureFactoryTest {
 
     @Test
     public void rnd() {
-        PrimaryBean bean = Fixture.from(PrimaryBean.class).gimme("rnd");
+        PrimaryBean bean = Fixture.from(PrimaryBean.class).uses(new CustomProcessor()).gimme("rnd");
         assertThat(bean.getSecondaries(), notNullValue());
         assertThat(bean.getSecondaries().size(), is(3));
     }
