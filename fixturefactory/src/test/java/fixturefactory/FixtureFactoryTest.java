@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import org.hamcrest.CoreMatchers;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,6 +29,8 @@ public class FixtureFactoryTest {
             add("primaryString", "test_value");
             add("secondaries", has(1).of(SecondaryBean.class, "basic"));
         }});
+
+        FixtureFactoryLoader.loadTemplates("fixturefactory");
     }
 
     @Test
@@ -38,5 +41,12 @@ public class FixtureFactoryTest {
         assertThat(bean.getSecondaries().size(), is(1));
         SecondaryBean sb = bean.getSecondaries().get(0);
         assertThat(sb.getSecondaryDouble(), is(12d));
+    }
+
+    @Test
+    public void rnd() {
+        PrimaryBean bean = Fixture.from(PrimaryBean.class).gimme("rnd");
+        assertThat(bean.getSecondaries(), notNullValue());
+        assertThat(bean.getSecondaries().size(), is(3));
     }
 }
