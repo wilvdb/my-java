@@ -8,6 +8,7 @@
         <module>nio2</module>
         <module>jpa</module>
         <module>springdatajpa</module>
+        <module>fixturefactory</module>
     </modules>
 
     <packaging>pom</packaging>
