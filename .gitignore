@@ -40,3 +40,4 @@ errorprone/errorprone.iml
 errorprone/target
 truth/truth.iml
 auto/auto.iml
+auto/target
