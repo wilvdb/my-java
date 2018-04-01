@@ -10,6 +10,7 @@
         <module>springdatajpa</module>
         <module>fixturefactory</module>
         <module>errorprone</module>
+        <module>truth</module>
     </modules>
 
     <packaging>pom</packaging>
