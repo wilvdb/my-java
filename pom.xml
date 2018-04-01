@@ -9,6 +9,7 @@
         <module>jpa</module>
         <module>springdatajpa</module>
         <module>fixturefactory</module>
+        <module>errorprone</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -36,3 +36,4 @@ nio2/target/
 springdatajpa/springdatajpa.iml
 springdatajpa/target
 fixturefactory/fixturefactory.iml
+errorprone/errorprone.iml
