@@ -11,6 +11,7 @@
         <module>fixturefactory</module>
         <module>errorprone</module>
         <module>truth</module>
+        <module>auto</module>
     </modules>
 
     <packaging>pom</packaging>
