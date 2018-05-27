@@ -12,6 +12,7 @@
         <module>errorprone</module>
         <module>truth</module>
         <module>auto</module>
+        <module>checkerframework</module>
     </modules>
 
     <packaging>pom</packaging>

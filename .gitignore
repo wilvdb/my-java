@@ -41,3 +41,5 @@ errorprone/target
 truth/truth.iml
 auto/auto.iml
 auto/target
+checkerframework/checkerframework.iml
+checkerframework/target
