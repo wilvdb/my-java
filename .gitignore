@@ -43,3 +43,5 @@ auto/auto.iml
 auto/target
 checkerframework/checkerframework.iml
 checkerframework/target
+mapstruct/mapstruct.iml
+mapstruct/target

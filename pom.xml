@@ -13,6 +13,7 @@
         <module>truth</module>
         <module>auto</module>
         <module>checkerframework</module>
+        <module>mapstruct</module>
     </modules>
 
     <packaging>pom</packaging>

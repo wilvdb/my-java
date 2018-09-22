@@ -1,5 +1,7 @@
 package checkerframework;
 
+import org.checkerframework.checker.formatter.qual.ConversionCategory;
+import org.checkerframework.checker.formatter.qual.Format;
 import org.checkerframework.checker.index.qual.NonNegative;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
@@ -13,6 +15,8 @@ public class Main {
     @Regex(1)
     private String regex = "\\d*";
 
+    @Format(ConversionCategory.CHAR)
+    private static String FORMAT = "%d";
 
     public void main(String[] args) {
         Main main = new Main();
@@ -24,6 +28,8 @@ public class Main {
      * @param var
      */
     public void test(@NonNegative @Nullable Integer var) {
+        String.format(FORMAT);
+
         System.out.println(var.toString());
     }
 }
