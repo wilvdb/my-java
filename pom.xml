@@ -14,6 +14,7 @@
         <module>auto</module>
         <module>checkerframework</module>
         <module>mapstruct</module>
+        <module>jnosql</module>
     </modules>
 
     <packaging>pom</packaging>

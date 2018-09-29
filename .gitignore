@@ -45,3 +45,5 @@ checkerframework/checkerframework.iml
 checkerframework/target
 mapstruct/mapstruct.iml
 mapstruct/target
+jnosql/jnosql.iml
+jnosql/target
