@@ -10,8 +10,9 @@ import de.flapdoodle.embed.mongo.config.Timeout;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 import jnosql.entity.Person;
+import jnosql.repository.PersonRepository;
+import org.jnosql.artemis.DatabaseQualifier;
 import org.jnosql.artemis.document.DocumentTemplate;
-import org.jnosql.artemis.key.KeyValueTemplate;
 import org.jnosql.diana.api.document.DocumentQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,12 +76,12 @@ public class App {
             Optional<Person> personOptional = documentTemplate.singleResult(query);
             LOGGER.info("Entity found {}", personOptional);
 
-            LOGGER.info("Get KeyValueTemplate from container");
-            KeyValueTemplate template = container.select(KeyValueTemplate.class).get();
-            Person userSaved = template.put(person);
+            LOGGER.info("Get PersonRepository based on KeyValue qualifier from container");
+            PersonRepository repo = container.select(PersonRepository.class, DatabaseQualifier.ofKeyValue()).get();
+            Person personSaved = repo.save(person);
             LOGGER.info("Person saved into Redis");
-            Optional<Person> user = template.get(id, Person.class);
-            LOGGER.info("Entity found {}", user);
+            Optional<Person> p = repo.findById(id);
+            LOGGER.info("Entity found {}", p);
 
         } finally {
             if (mongodExecutable != null) {
