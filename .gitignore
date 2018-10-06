@@ -47,3 +47,5 @@ mapstruct/mapstruct.iml
 mapstruct/target
 jnosql/jnosql.iml
 jnosql/target
+vavr/vavr.iml
+vavr/target

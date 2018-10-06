@@ -15,6 +15,7 @@
         <module>checkerframework</module>
         <module>mapstruct</module>
         <module>jnosql</module>
+        <module>vavr</module>
     </modules>
 
     <packaging>pom</packaging>
